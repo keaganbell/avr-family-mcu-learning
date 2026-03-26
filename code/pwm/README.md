@@ -1,5 +1,5 @@
 # Overview
-This example uses two timers to pulse an LED smoothly between lit and unlit. The Timer/Counter Compare Register 0 is set to CTC mode and the Timer/Counter Compare Register 1 is set to fast PWM 8-bit mode.
+This example uses two timers to pulse an LED smoothly between lit and unlit. The Timer/Counter Control Register 0 is set to CTC mode and the Timer/Counter Control Register 1 is set to fast PWM 8-bit mode.
 
 The register that I chose to use for PWM is OC1A which is associated with PORTB1 on the ATmega328P which is gpio pin ~9 on the Arduino UNO.
 
