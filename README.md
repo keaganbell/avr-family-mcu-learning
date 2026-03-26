@@ -16,7 +16,6 @@ To clean build artifacts, just delete the folder and re-run the build script wit
 
 ### Build Flags
 The build process is setup to build just a single translation unit. The main.c file should just include all the code files .h and .c alike.
-- specify which example to build and flash. The script will search for a folder in .\code\ named *target* and try to compile a file named *target_main.c*
-```CMD
-build.bat -tar *target* 
-```
+-  -tar *target*
+specify which example to build and flash. The script will search for a folder in .\code\ named *target* and try to compile a file named *target_main.c*
+ 
