@@ -3,6 +3,7 @@ volatile static uint32_t ms_counter;
 static void timer_init(void) {
     // Datasheet section 14.9
     
+    // 1. Waveform settings
     // TCCR0A:
     // COM0A1 COM0A0 COM0B1 COM0B0 - - WGM01 WGM00
     //   7      6      5      4    3 2   1     0   
@@ -11,7 +12,6 @@ static void timer_init(void) {
     // FOC0A FOC0B - - WGM02 CS02 CS01 CS00
     //   7     6   5 4   3    2    1    0   
     
-    // 1. Waveform settings
     // CTC mode: Mode 2, WGM02:0, WGM01:1, WGM00:0
     TCCR0A |= (1<<WGM01);
     TCCR0A &= ~(1<<WGM00);

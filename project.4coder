@@ -36,7 +36,7 @@ command_list = {
 		.footer_panel = true,
 		.save_dirty_files = true,
 		.cursor_at_end = true,
-		.cmd = { {"build.bat -tar timer -port COM5 -avr C:\\Keagan\\Programs\\avr8-gnu-toolchain-win32_x86_64\\", .os = "win"} },
+		.cmd = { {"build.bat -tar pwm -port COM5 -avr C:\\Keagan\\Programs\\avr8-gnu-toolchain-win32_x86_64\\", .os = "win"} },
 	},
 };
 
