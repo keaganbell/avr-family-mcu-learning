@@ -3,12 +3,17 @@ This repo contains example code for learning the the avr family microcontroller 
 
 ## Requirements
 - Windows (for now).
-- [AVR toolchain](https://tinusaur.com/guides/avr-gcc-toolchain/). Need avr-gcc, avr-objcopy, and avrdude programs.
+- Need avr-gcc, avr-objcopy, and avrdude programs from the [AVR toolchain](https://tinusaur.com/guides/avr-gcc-toolchain/).
 
 ## Build Instructions
-After isntalling the avr toolchain, just run build.bat with the specified parameters. It should produce a build folder and a target folder depending on which example was specified in with the -tar flag. It will also flash the program to the board. Make sure the Arduino is plugged in to your PC via USB. Edit path below to your installation of the avr toolchain. The specified path should contain the .\bin\ folder with the toolchain executables.
+After isntalling the avr toolchain, just run build.bat with the specified parameters. It should produce a build folder and a target folder depending on which example was specified with the -tar flag. It will also flash the program to the board. Make sure the Arduino is plugged in to your PC via USB. Edit path below to your installation of the avr toolchain. The specified path should contain the .\bin\ folder with the toolchain executables.
 ``` CMD
 build.bat -tar blink -port COM5 -avr C:\avr-toolchain\avr8-gnu-toolchain-win32_x86_64\
 ```
 
 To clean build artifacts, just delete the folder and re-run the build script with desired arguments. The script will take care of making and moving the necessary files.
+
+### Build Flags
+The build process is setup to build just a single translation unit. The main.c file should just include all the code files .h and .c alike.
+- -tar *target* 
+-- specify which example to build and flash. The script will search for a folder in .\code\ named *target* and try to compile a file named *target_main.c*
