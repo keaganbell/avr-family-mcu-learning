@@ -1,12 +1,14 @@
 # Overview
-This project explores the foundations of interface communication for the Atmega328P (Arduino UNO) without the IDE or helper libraries. It uses the [AVR toolchain](https://tinusaur.com/guides/avr-gcc-toolchain/) to compile C code to .hex files and flashes it to the Arduino with avrdude. Running the Arduino program should light up an LED at 50% brightness. Running the PC program allows the user to type in a number between 0 and 100 to change the brightness of the LED over serial communication.
+This repo contains example code for learning the the avr family microcontroller feature set. This project primarily uses the ATmega328P (Arduino UNO) without the IDE or Ardiuno system libraries to focus on the foundations of bare-metal programming in C. It uses the [AVRtoolchain](https://tinusaur.com/guides/avr-gcc-toolchain/) to compile C code to .hex files and flashes it to the Arduino with avrdude. See the build instructions for how to choose which code example to compile and run on the board.
 
 ## Requirements
-- Windows (for now). Writing to files and file descriptors is OS-specific. Porting to other platforms is trivial.
+- Windows (for now).
 - [AVR toolchain](https://tinusaur.com/guides/avr-gcc-toolchain/). Need avr-gcc, avr-objcopy, and avrdude programs.
 
 ## Build Instructions
-After isntalling the avr toolchain, just run build.bat. It should produce a build folder with the PC program executable and the Arduino code. It will also flash the program to the board. Make sure the Arduino is plugged in to your PC via USB.
+After isntalling the avr toolchain, just run build.bat with the specified parameters. It should produce a build folder and a target folder depending on which example was specified in with the -tar flag. It will also flash the program to the board. Make sure the Arduino is plugged in to your PC via USB. Edit path below to your installation of the avr toolchain. The specified path should contain the .\bin\ folder with the toolchain executables.
 ``` CMD
-build.bat -port COM5 -avr C:\avr-toolchain\avr8-gnu-toolchain-win32_x86_64\
+build.bat -tar blink -port COM5 -avr C:\avr-toolchain\avr8-gnu-toolchain-win32_x86_64\
 ```
+
+To clean build artifacts, just delete the folder and re-run the build script with desired arguments. The script will take care of making and moving the necessary files.

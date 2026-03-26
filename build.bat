@@ -21,6 +21,13 @@ if /i "%~1"=="-avr" (
     goto parse
 )
 
+if /i "%~1"=="-tar" (
+    set tar=%~2
+    shift
+    shift
+    goto parse
+)
+
 shift
 goto parse
 :done
@@ -39,6 +46,15 @@ if "%port%"=="" (
 	exit /b 1
 )
 
+if "%tar%"=="" (
+	echo please specify target.
+	echo example: build.bat -tar blink
+	echo   will build .\code\blink\blink_main.c
+	exit /b 1
+)
+set "src=..\..\code\%tar%\%tar%_main.c"
+echo compiling %src%
+
 :: find toolchain
 set "cc=%avr%\bin\avr-gcc.exe"
 if not exist %cc% echo failed to find avr-gcc.exe. check the avr toolchain path. && exit /b 1
@@ -52,16 +68,24 @@ if not exist %dude% echo failed to find avrdude.exe. check the avr toolchain pat
 if not exist build mkdir build
 pushd build
 
+if not exist %tar% mkdir %tar%
+pushd %tar%
+echo building in %cd%
+
+if not exist %src% (
+	echo %src% not found.
+	exit /b 1
+)
+
 
 :: compile the code
-%cc% -Os -DF_CPU=16000000UL -mmcu=atmega328p -c -o led.o ..\code\firmware.c || exit /b 1
-%cc% -o led.bin led.o
+%cc% -Os -DF_CPU=16000000UL -mmcu=atmega328p -I..\..\code\shared -o %tar%.bin %src% || exit /b 1
 
 
 :: convert to correct format
-%cpy% -O ihex -R .eeprom led.bin led.hex || exit /b 1
+%cpy% -O ihex -R .eeprom %tar%.bin %tar%.hex || exit /b 1
 
 
 :: flash the program
-%dude% -F -V -c arduino -p ATMEGA328P -P %port% -b 115200 -U flash:w:led.hex
+%dude% -F -V -c arduino -p ATMEGA328P -P %port% -b 115200 -U flash:w:%tar%.hex
 
