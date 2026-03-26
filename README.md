@@ -1,5 +1,5 @@
 # Overview
-This repo contains example code for learning the the avr family microcontroller feature set. This project primarily uses the ATmega328P (Arduino UNO) without the IDE or Ardiuno system libraries to focus on the foundations of bare-metal programming in C. It uses the [AVRtoolchain](https://tinusaur.com/guides/avr-gcc-toolchain/) to compile C code to .hex files and flashes it to the Arduino with avrdude. See the build instructions for how to choose which code example to compile and run on the board.
+This repo contains example code for learning the avr family microcontroller feature set. This project primarily uses the ATmega328P (Arduino UNO) without the IDE or Ardiuno system libraries in order to focus on the foundations of bare-metal programming in C. It uses the [AVRtoolchain](https://tinusaur.com/guides/avr-gcc-toolchain/) to compile C code to .hex files and flashes it to the Arduino with avrdude. See the build instructions for how to choose which code example to compile and run on the board.
 
 ## Requirements
 - Windows (for now).
