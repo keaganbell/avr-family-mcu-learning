@@ -1,13 +1,13 @@
 
 #define SER_PIN   PB4
-#define OE_PIN    PB3
+#define RCLK_PIN    PB3
 #define SRCLK_PIN PB2
 #define SRCLR_PIN PB1
 
 static void shift_init(void) {
     // Set output pins
     DDRB |= (1<<SER_PIN);
-    DDRB |= (1<<OE_PIN);
+    DDRB |= (1<<RCLK_PIN);
     DDRB |= (1<<SRCLK_PIN);
     DDRB |= (1<<SRCLR_PIN);
     
@@ -27,8 +27,8 @@ static void shift(void) {
 }
 
 static void shift_enable_output(void) {
-    PORTB |= (1<<OE_PIN);
-    PORTB &= ~(1<<OE_PIN);
+    PORTB |= (1<<RCLK_PIN);
+    PORTB &= ~(1<<RCLK_PIN);
 }
 
 static void shift_clear(void) {
