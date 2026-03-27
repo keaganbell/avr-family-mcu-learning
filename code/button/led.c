@@ -1,0 +1,12 @@
+
+#define LED_PULSE_TIME_MS 1000
+
+static void led_init(void) {
+    // initialize PORTB for output on pin 3 (gpio ~11)
+    DDRB |= (1<<DDB1);
+}
+
+static void led_toggle(void) {
+    // toggle PORTB3 on and off
+    PORTB ^= (1<<PORTB1);
+}
